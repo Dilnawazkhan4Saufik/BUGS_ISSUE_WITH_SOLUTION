@@ -1,0 +1,15 @@
+Question: error: Failed to create a worklet. Did you forget to add Reanimated Babel plugin in babel.config.js?
+See installation docs at https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/installation#babel-plugin., js engine: hermes
+Answer:
+step 1: add following lines(in this file): babel.config.js
+module.exports = {
+  presets: ['module:metro-react-native-babel-preset'],
+ -> env: {
+    production: {
+      plugins: ['react-native-paper/babel'],
+    },
+  },
+ -> plugins: ['react-native-reanimated/plugin'],
+};
+step 2: run metro using this command
+-> npx react-native start --reset-cache
